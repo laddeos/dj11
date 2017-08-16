@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls Tutorial</title>
+</head>
+<body>
+{% if latest_question_list %}
+    <ol>
+    {% for question in latest_question_list %}
+        <h3><li>{{ question.question_text }}</li></h3>
+        <ul>
+            {% for choice in question.choice_set.all %}
+                <li>{{ choice.choice_text }} with {{ choice.votes }} votes</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    </ol>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</body>
+</html>
